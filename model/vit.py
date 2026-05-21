@@ -20,7 +20,6 @@ class PatchEmbedding(nn.Module):
         
         return x
     
-
 class ViTMLP(nn.Module):
     def __init__(self, embed_dim=768, mlp_dim=3072, dropout=0.1):
         super(ViTMLP, self).__init__()
