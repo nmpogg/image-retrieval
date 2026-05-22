@@ -6,7 +6,7 @@ from PIL import Image
 # Cấu hình trang
 st.set_page_config(page_title="CUB-200 Bird Search Engine", layout="wide")
 
-st.title("🦅 Hệ thống Truy xuất Ảnh Chim CUB-200")
+st.title("🦅 Hệ thống Truy xuất Ảnh CUB-200")
 st.markdown("---")
 
 # --- PHẦN 1: CẤU HÌNH SERVER ---
@@ -16,12 +16,12 @@ with st.sidebar:
     st.info("Lưu ý: Đảm bảo server Colab đang chạy.")
 
     st.header("Tham số tìm kiếm")
-    model_type = st.selectbox("Chọn mô hình:", ["ResNet", "ViT", "CLIP"])
+    model_type = st.selectbox("Chọn mô hình:", ["ConvNeXt", "DINOv2", "Combined", "SigLIP"])
     top_k = st.slider("Số lượng kết quả (Top K):", 1, 20, 5)
 
 # --- PHẦN 2: CHỌN PHƯƠNG THỨC TÌM KIẾM ---
 query_type = "image"
-if model_type == "CLIP":
+if model_type == "SigLIP":
     query_type = st.radio("Phương thức tìm kiếm:", ["Tìm bằng ảnh (Image-to-Image)", "Tìm bằng chữ (Text-to-Image)"], horizontal=True)
     query_type = "image" if "ảnh" in query_type else "text"
 else:
